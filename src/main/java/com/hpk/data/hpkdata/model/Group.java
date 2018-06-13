@@ -12,11 +12,11 @@ import javax.persistence.*;
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    int teacher_id;
-    String name;
-    int course;
-    String department;
+    private int id;
+    private int teacher_id;
+    private String name;
+    private int course;
+    private String department;
 
     public Group(int id, int teacher_id, String name, int course, String department){
         this.id = id;

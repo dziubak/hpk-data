@@ -9,5 +9,4 @@ public interface IGroup {
     Group update(Group group);
     void deleteById(int id);
     List<Group> showAll();
-
 }
