@@ -1,6 +1,7 @@
 package com.hpk.data.hpkdata.model;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,4 +19,11 @@ public class Group {
     private String name;
     private int course;
     private String department;
+    public Group(int teacherId, String name, int course, String department){
+        this.teacherId = teacherId;
+        this.name = name;
+        this.course = course;
+        this.department = department;
+    }
+    public Group(){}
 }

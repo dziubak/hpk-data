@@ -9,6 +9,5 @@
 </head>
 <body>
     <h2>Hello index JSP page</h2>
-
 </body>
 </html>

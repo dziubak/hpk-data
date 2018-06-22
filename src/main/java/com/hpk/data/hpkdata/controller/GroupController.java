@@ -3,10 +3,12 @@ package com.hpk.data.hpkdata.controller;
 import com.hpk.data.hpkdata.model.Group;
 import com.hpk.data.hpkdata.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping(value = "/group")
 public class GroupController {
 
@@ -14,23 +16,33 @@ public class GroupController {
     GroupRepository groupRepository;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Group createGroup(@RequestBody Group group){
-        return groupRepository.save(group);
+    public String createGroup(@ModelAttribute("group") Group group){
+        groupRepository.save(group);
+        return "redirect:/group/get";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public Group updateGroup(@RequestBody Group group){
-        return  groupRepository.save(group);
-    }
-
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public void deleteGroup(@RequestParam("id") int id){
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteGroup(@PathVariable("id") int id){
         groupRepository.deleteById(id);
+        return "redirect:/group/get";
     }
 
-   @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public List<Group> getGroup(){
-        return (List) groupRepository.findAll();
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public String getAllUsers(Map<String, Object> map){
+        map.put("groups", groupRepository.findAll());
+        return "group_show";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(@PathVariable("id") int id, Model model){
+        model.addAttribute("group", groupRepository.findById(id));
+        return "group_update";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute("group") Group group){
+        groupRepository.save(group);
+        return "redirect:/group/get";
     }
 
 }
