@@ -35,7 +35,7 @@ public class GroupController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable("id") int id, Model model){
-        model.addAttribute("group", groupRepository.findById(id));
+        model.addAttribute("group", groupRepository.getOne(id));
         return "group_update";
     }
 
