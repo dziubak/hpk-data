@@ -10,6 +10,7 @@
 </head>
 <body>
 <form action="/group/update"  method="POST">
+    <input type="hidden" name="id" value="${group.id}">
     <h1>Group update</h1>
     <h3>Curator</h3>
     <input type="text" name="teacherId" value="${group.teacherId}">
