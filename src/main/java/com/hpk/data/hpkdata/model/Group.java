@@ -1,32 +1,33 @@
 package com.hpk.data.hpkdata.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "team")
-@Getter @Setter
-@ToString
+@Data
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @Column(name = "teacher_id")
-    private int teacherId;
-
+    @Column(name = "name")
     private String name;
-    private int course;
-    private String department;
 
-    public Group(int teacherId, String name, int course, String department){
-        this.teacherId = teacherId;
-        this.name = name;
-        this.course = course;
-        this.department = department;
-    }
-    public Group(){}
+    @Column(name = "course")
+    private int course;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "teacher_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Teacher teacher;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "department_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Department department;
+
 }

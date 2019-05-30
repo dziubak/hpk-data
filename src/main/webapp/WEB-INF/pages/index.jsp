@@ -3,10 +3,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Spring MVC</title>
+    <%@ include file = "fragment/script.jsp" %>
+
+    <title>HPK info || Головна</title>
 </head>
 <body>
-    <h2>Hello index JSP page</h2>
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1 class="display-4">HPK info</h1>
+        <p class="lead">Admin panel</p>
+        <hr class="my-4">
+        <a class="btn btn-outline-warning btn-lg" href="/timetable">Розклад</a>
+        <a class="btn btn-outline-info btn-lg" href="/subject">Предмети</a>
+        <a class="btn btn-outline-info btn-lg" href="/group">Групи</a>
+        <a class="btn btn-outline-info btn-lg" href="/teacher">Викладачі</a>
+        <a class="btn btn-outline-info btn-lg" href="/department">Відділення</a>
+        <a class="btn btn-outline-info btn-lg" href="/classroom">Аудиторії</a>
+    </div>
+</div>
 </body>
 </html>
