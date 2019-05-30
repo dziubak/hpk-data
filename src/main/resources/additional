@@ -1,0 +1,11 @@
+CREATE TABLE `HpkBot`.`department` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `HpkBot`.`team`
+ADD COLUMN `department_id` INT(11) NULL AFTER `course`;
+
+ALTER TABLE `HpkBot`.`team`
+CHANGE COLUMN `teacher_id` `teacher_id` INT(11) NULL DEFAULT NULL AFTER `course`;
+
