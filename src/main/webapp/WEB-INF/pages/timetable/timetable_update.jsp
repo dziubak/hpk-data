@@ -114,6 +114,9 @@
         <label class="col-md-2 col-form-label">Викладач 2</label>
         <div class="col-md-8">
             <select name="teacherSecond">
+                <c:if test="${timetable.teacherSecond.surname eq null || timetable.teacherSecond.surname eq ''}">
+                    <option value="" SELECTED></option>
+                </c:if>
                 <c:forEach items="${teachers}" var="teacher">
                     <option value="${teacher.id}" <c:if test="${teacher.surname eq timetable.teacherSecond.surname}">SELECTED</c:if>>${teacher.surname}</option>
                 </c:forEach>
@@ -127,8 +130,15 @@
         <label class="col-md-2 col-form-label">Аудиторія 2</label>
         <div class="col-md-8">
             <select name="classroomSecond">
+                <c:if test="${classroom.number eq null || classroom.number eq ''}">
+                    <option value="" SELECTED></option>
+                </c:if>
                 <c:forEach items="${classrooms}" var="classroom">
-                    <option value="${classroom.id}" <c:if test="${classroom.number eq timetable.classroomSecond.number}">SELECTED</c:if>>${classroom.number}</option>
+                    <option value="${classroom.id}"
+                            <c:if test="${classroom.number eq timetable.classroomSecond.number}">
+                                SELECTED
+                            </c:if>
+                    >${classroom.number}</option>
                 </c:forEach>
             </select>
         </div>
@@ -138,7 +148,7 @@
     <br>
 
     <div class="col-md-12">
-        <button type="submit" class="btn btn-success btn-block">Добавить</button>
+        <button type="submit" class="btn btn-success btn-block">Оновити</button>
     </div>
 
 </form>

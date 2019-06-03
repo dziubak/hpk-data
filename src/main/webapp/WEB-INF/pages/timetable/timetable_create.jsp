@@ -113,6 +113,7 @@
         <label class="col-md-2 col-form-label">Викладач 2</label>
         <div class="col-md-8">
             <select name="teacherSecond">
+                <option value="0"></option>
                 <c:forEach items="${teachers}" var="teacher">
                     <option value="${teacher.id}">${teacher.surname}</option>
                 </c:forEach>
@@ -126,6 +127,7 @@
         <label class="col-md-2 col-form-label">Аудиторія 2</label>
         <div class="col-md-8">
             <select name="classroomSecond">
+                <option value="0"></option>
                 <c:forEach items="${classrooms}" var="classroom">
                     <option value="${classroom.id}">${classroom.number}</option>
                 </c:forEach>
